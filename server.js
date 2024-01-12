@@ -6,7 +6,6 @@ import { createServer as createViteServer } from 'vite'
 
 import nodemailer from 'nodemailer';
 import bodyParser from 'body-parser';
-import cors from 'cors';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -31,13 +30,6 @@ async function createServer() {
   app.use(bodyParser.json({limit: '50mb'}));
   app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
   app.use(express.json());
-
-  const corsOptions ={
-    origin:["*", "https://*.snapar.com"], 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200,
-  }
-  app.use(cors(corsOptions))
 
   app.get('/', function(req, res) {
     res.sendFile(__dirname + "/index.html");
