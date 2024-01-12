@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: mediastream: blob: filesystem: about: ws: wss: 'unsafe-eval' 'unsafe-inline'; 
+    script-src * https://cf-st.sc-cdn.net/ data: blob: 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval'; 
+    connect-src * https://*.snapar.com data: blob: 'unsafe-inline'; 
+    img-src * data: blob: 'unsafe-inline'; 
+    frame-src * data: blob: ; 
+    style-src * data: blob: 'unsafe-inline';
+    font-src * data: blob: 'unsafe-inline';"/>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;500&display=swap" rel="stylesheet">
+    <title>Camera Kit Web App - 5DCulture</title>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  </head>
+  <body>
+
+    <div id="main-div">
+
+      <div id="carosel-items-div">
+
+        <!-- Carosel items div -->
+        <div id="carosel-items-btn-container" class="container d-flex justify-content-center align-items-center">
+          <div id="carosel-items-btn" class="shadow" onclick="close_carosel_items();">
+            <div id="carosel-btn-text" class="container d-flex justify-content-center align-items-center">
+              Close
+          </div>
+          </div>
+        </div>
+
+        <div id="carosel-items-container" class="container">
+          <div class="row">
+            <div class="col-sm">
+              
+              <div id="item-container" class="shadow">
+                <img id="carosel-item-01" src="/Green_Hat.jpg" loading="lazy" class="carosel-img">
+              </div>
+
+            </div>
+            <div class="col-sm">
+              
+              <div id="item-container" class="shadow">
+                <img id="carosel-item-02" src="/Vivian_Westwood.jpg" loading="lazy" class="carosel-img">
+              </div>  
+
+            </div>
+            <div class="col-sm">
+
+              <div id="item-container" class="shadow">
+                <img id="carosel-item-03" src="/Herenhoed.jpg" loading="lazy" class="carosel-img">
+              </div>
+
+            </div>
+            <div class="col-sm">
+
+              <div id="item-container" class="shadow">
+                <img id="carosel-item-04" src="/Zonnebril.jpg" loading="lazy" class="carosel-img">
+              </div>
+
+            </div>
+            
+          </div>
+        </div>
+      
+      </div>
+
+      <div id="send-email-div" style="display: none;">
+        <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
+          <!-- Send email view -->
+            <div>
+              <div class="container d-flex justify-content-center">
+                <h4 id="text">Insert email address:</h4>
+              </div>
+              <div class="container d-flex justify-content-center">
+                <input id="input-mail" type="text" class="form-control" placeholder="Email" aria-label="Email">
+              </div>
+              <div class="container d-flex justify-content-center">
+                <button type="button" onclick="close_email_view();" class="btn btn-primary btn-send-email">Cancel</button>
+                <button type="button" onclick="send_email();" class="btn btn-primary btn-send-email">Send</button>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div id="snapchat-main-div">
+        <!-- Carosel Top Button -->
+        <div id="carosel-container" class="container d-flex justify-content-center align-items-center">
+          <div id="carosel-btn" class="shadow d-flex justify-content-center align-items-center" onclick="open_carosel_items();">
+            <div class="container d-flex justify-content-center align-items-center">
+                <h4 id="carosel-text">// Lens Name //</h4>
+            </div>
+            <img id="carosel-icon" src="/bootstrap_icons/list.svg">
+          </div>
+        </div>
+  
+        <!-- Snapchat Canvas -->
+        <div id="snapchat-container" class="container d-flex justify-content-center align-items-center">
+            <canvas id="canvas" class="shadow"></canvas>
+            <div id="screenshot-camera" class="shadow" onclick="open_email_view();">
+              <img src="/camera-fill.png" id="camera-img" alt="">
+            </div>
+        </div>
+  
+        <!-- Description -->
+        <div id="description-container" class="container v-flex justify-content-center align-items-center">
+            <div id="description-title" class="d-flex justify-content-center align-items-center">Description</div>
+            <div id="description-text" class=" d-flex justify-content-center align-items-center">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+        </div>
+  
+        <!-- Logo Section -->
+        <div id="line-container" class="container v-flex justify-content-center align-items-center">
+            <hr class="hr" />
+        </div>
+  
+        <div id="logo-container" class="container">
+            <div class="row">
+              <div class="col-sm align-items-center" style="display: flex; justify-content: center;">
+                <img src="/5DCulture_Logo.png" loading="lazy" class="logo_img">
+              </div>
+              <div class="col-sm align-items-center" style="display: flex; justify-content: center;">
+                <img src="/Logo_snap.png" loading="lazy" class="logo_img">
+              </div>
+              <div class="col-sm align-items-center" style="display: flex; justify-content: center;">
+                <img src="/3DOM_Digital_Industry_logo.png" loading="lazy" class="logo_img">
+              </div>
+              <div class="col-sm align-items-center" style="display: flex; justify-content: center;">
+                <img src="/CM.jpg" loading="lazy" class="logo_img">
+              </div>
+              <div class="col-sm align-items-center" style="display: flex; justify-content: center;">
+                <img src="/EFHA_VECTOR.png" loading="lazy" class="logo_img">
+              </div>
+          </div>
+        </div>
+    
+      </div>
+
+    </div>
+
+    <script>
+
+      var image = null;
+
+      function open_carosel_items() {
+        document.getElementById("snapchat-main-div").style.display = "none";
+        document.getElementById("carosel-items-div").style.display = "block";
+      }
+
+      function close_carosel_items() {
+        document.getElementById("snapchat-main-div").style.display = "block";
+        document.getElementById("carosel-items-div").style.display = "none";
+      }
+
+      function take_screenshot() {
+        var canvas = document.getElementById("canvas");
+        canvas.toDataURL('png');
+        console.log("take screenshot - OK");
+      }
+
+      function open_email_view(){
+        setTimeout(() => {  
+          image = canvas.toDataURL();
+          document.getElementById("snapchat-main-div").style.display = "none";
+          document.getElementById("send-email-div").style.display = "block";
+        }, 1000);
+      }
+
+      function close_email_view(){
+        document.getElementById("snapchat-main-div").style.display = "block";
+        document.getElementById("send-email-div").style.display = "none";
+      }
+
+      const validateEmail = (email) => {
+        return email.match(
+          /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+      };
+
+      function send_email() {
+        email = document.getElementById('input-mail').value
+        
+        if (validateEmail(email)) {
+          fetch("http://localhost:5173/send_email", {
+            method: "POST",
+            body: JSON.stringify({
+              email_address: email,
+              file_img: image
+            }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8"
+            }
+          })
+          .then((res) => res.json())
+          .then(data => {
+            if (data.status == 'success') {
+              alert('Email send correctly.');
+              close_email_view();
+              document.getElementById('input-mail').value = "";
+            } else {
+              alert('There is a problem. The email was not sent.');
+              document.getElementById('input-mail').value = "";
+            }
+          });
+        } else {
+          alert('Please enter a valid e-mail.');
+        }
+      }
+
+    </script>
+
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
